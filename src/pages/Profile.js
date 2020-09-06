@@ -1,6 +1,6 @@
 import React from "react";
 import Layout from "../components/Layout";
 
-export default function Profile() {
-  return <Layout>Profile Page</Layout>;
+export default function Home() {
+  return <Layout>This will be the profile page</Layout>;
 }

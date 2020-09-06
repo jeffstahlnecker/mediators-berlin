@@ -1,5 +1,6 @@
 import React from "react";
 import tw from "twin.macro";
+import { Link } from "gatsby";
 
 export const PureFooter = () => {
   return (
@@ -7,19 +8,19 @@ export const PureFooter = () => {
       <Section>
         <Menu>
           <MenuItem>
-            <TheLink href="/">MenuLink</TheLink>
+            <TheLink to="/">MenuLink</TheLink>
           </MenuItem>
           <MenuItem>
-            <TheLink href="/">MenuLink</TheLink>
+            <TheLink to="/">MenuLink</TheLink>
           </MenuItem>
           <MenuItem>
-            <TheLink href="/">MenuLink</TheLink>
+            <TheLink to="/">MenuLink</TheLink>
           </MenuItem>
           <MenuItem>
-            <TheLink href="/">MenuLink</TheLink>
+            <TheLink to="/">MenuLink</TheLink>
           </MenuItem>
           <MenuItem>
-            <TheLink href="/">MenuLink</TheLink>
+            <TheLink to="/">MenuLink</TheLink>
           </MenuItem>
         </Menu>
         <Social>
@@ -90,7 +91,7 @@ const Menu = tw.nav`
 const MenuItem = tw.div`
 px-5 py-2`;
 
-const TheLink = tw.a`
+const TheLink = tw(Link)`
 text-base leading-6 text-gray-500 hover:text-gray-900`;
 
 const Social = tw.div`

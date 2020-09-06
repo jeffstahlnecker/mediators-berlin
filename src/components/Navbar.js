@@ -23,16 +23,16 @@ const PureNavbar = ({ data }) => {
               />
             </Logo>
             <Menu>
-              <MenuItem href="/">Home</MenuItem>
+              <MenuItem to="/">Home</MenuItem>
             </Menu>
             <Menu>
-              <MenuItem href="/profile">Profile</MenuItem>
+              <MenuItem to="/profile">Profile</MenuItem>
             </Menu>
             <Menu>
-              <MenuItem href="/">MenuItem</MenuItem>
+              <MenuItem to="/">MenuItem</MenuItem>
             </Menu>
             <Menu>
-              <MenuItem href="/">MenuItem</MenuItem>
+              <MenuItem to="/">MenuItem</MenuItem>
             </Menu>
           </Flex>
           <MobileMenu>
@@ -105,7 +105,7 @@ flex-shrink-0 flex items-center`;
 const Menu = tw.div`
 hidden sm:ml-6 sm:flex`;
 
-const MenuItem = tw.a`
+const MenuItem = tw(Link)`
 ml-8 inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium leading-5 text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300`;
 
 const MobileMenu = tw.div`
