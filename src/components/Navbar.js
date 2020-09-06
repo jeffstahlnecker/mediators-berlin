@@ -3,14 +3,9 @@ import { graphql, useStaticQuery, Link } from "gatsby";
 import Img from "gatsby-image";
 import tw from "twin.macro";
 import "../styles/tailwind-ui.min.css";
-import { Transition } from "@tailwindui/react";
 
 const PureNavbar = ({ data }) => {
-  const [isOpen, setNav] = useState(false);
-  const toggleNav = () => {
-    // eslint-disable-next-line no-shadow
-    setNav(isOpen => !isOpen);
-  };
+  const [isOn, setIsOn] = useState(false);
   return (
     <Nav>
       <Container>
@@ -36,9 +31,9 @@ const PureNavbar = ({ data }) => {
             </Menu>
           </Flex>
           <MobileMenu>
-            <MenuButton onClick={toggleNav}>
+            <MenuButton onClick={() => setIsOn(!isOn)}>
               <svg
-                className="block h-6 w-6"
+                className={`${isOn ? "hidden" : "block"} block h-6 w-6`}
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -51,7 +46,7 @@ const PureNavbar = ({ data }) => {
                 />
               </svg>
               <svg
-                className="hidden h-6 w-6"
+                className={`${isOn ? "block" : "hidden"} h-6 w-6`}
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -66,6 +61,12 @@ const PureNavbar = ({ data }) => {
             </MenuButton>
           </MobileMenu>
         </Section>
+        <div className={`${isOn ? "block" : "hidden"} md:hidden`}>
+          <MobileContainer>
+            <MobileLink to="/">Home</MobileLink>
+            <MobileLink to="/profile">Profile</MobileLink>
+          </MobileContainer>
+        </div>
       </Container>
     </Nav>
   );
@@ -114,4 +115,12 @@ const MobileMenu = tw.div`
 const MenuButton = tw.button`
 inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500
 `;
+
+const MobileContainer = tw.div`
+pt-2 pb-3`;
+
+const MobileLink = tw(Link)`
+mt-1 block pl-3 pr-4 py-2 border-l-4 border-transparent text-base font-medium text-gray-600 hover:text-gray-800 hover:bg-gray-50 hover:border-gray-300 focus:outline-none focus:text-gray-800 focus:bg-gray-50 focus:border-gray-300 transition duration-150 ease-in-out sm:pl-5 sm:pr-6
+`;
+
 export default Navbar;
