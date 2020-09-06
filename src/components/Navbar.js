@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { graphql, useStaticQuery, Link } from "gatsby";
 import Img from "gatsby-image";
 import tw from "twin.macro";
+import "../styles/tailwind-ui.min.css";
 import { Transition } from "@tailwindui/react";
 
 const PureNavbar = ({ data }) => {
