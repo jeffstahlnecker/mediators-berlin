@@ -10,7 +10,6 @@ export default function Home() {
       <Hero />
       <Content />
       <Mediators />
-      Hello world!
     </Layout>
   );
 }
