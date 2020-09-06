@@ -385,7 +385,7 @@ const SetName = tw.div`
 text-lg leading-6 font-medium space-y-1`;
 
 const NameTitle = tw.p`
-text-indigo-600`;
+text-green-600`;
 
 const SetDescription = tw.div`
 text-lg leading-7`;

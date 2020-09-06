@@ -147,7 +147,7 @@ mx-auto text-base max-w-prose lg:max-w-none
 `;
 
 const SmallTitleText = tw.p`
-text-base leading-6 text-indigo-600 font-semibold tracking-wide uppercase`;
+text-base leading-6 text-green-600 font-semibold tracking-wide uppercase`;
 
 const TitleText = tw.h2`
 mt-2 mb-8 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl sm:leading-10`;

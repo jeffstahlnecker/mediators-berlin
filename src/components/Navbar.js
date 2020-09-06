@@ -23,10 +23,10 @@ const PureNavbar = ({ data }) => {
               />
             </Logo>
             <Menu>
-              <MenuItem href="/">MenuItem</MenuItem>
+              <MenuItem href="/">Home</MenuItem>
             </Menu>
             <Menu>
-              <MenuItem href="/">MenuItem</MenuItem>
+              <MenuItem href="/profile">Profile</MenuItem>
             </Menu>
             <Menu>
               <MenuItem href="/">MenuItem</MenuItem>
