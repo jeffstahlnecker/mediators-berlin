@@ -1,5 +1,6 @@
 import React from "react";
 import tw from "twin.macro";
+
 export const PureFooter = () => {
   return (
     <Container>
