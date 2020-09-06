@@ -18,6 +18,7 @@ module.exports = {
     `gatsby-plugin-sharp`,
     `gatsby-plugin-emotion`,
     `gatsby-plugin-sitemap`,
+    "gatsby-plugin-svg-sprite",
     {
       resolve: `gatsby-source-filesystem`,
       options: {

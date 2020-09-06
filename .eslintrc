@@ -9,7 +9,8 @@
   "extends": ["eslint:recommended", "react-app", "airbnb", "eslint-config-prettier"],
   "rules": {
     "strict": ["error", "never"],
-    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }]
+    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+    "react/prop-types": 0
   },
   "env": {
     "browser": true
