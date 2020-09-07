@@ -32,7 +32,6 @@ export const PureProfileHead = ({ data }) => {
           <Pill>Specialty</Pill>
         </SpecialtyContainer>
       </ProfileContainer>
-      ProfileHead
     </Section>
   );
 };

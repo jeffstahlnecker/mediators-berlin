@@ -4,8 +4,8 @@ const PureProfileBackground = () => {
   return <div>Mein Hintergrund (privat/beruflich</div>;
 };
 
-export const ProfileBackground = ({ ...props }) => {
+export const ProfileText = ({ ...props }) => {
   return <PureProfileBackground {...props} />;
 };
 
-export default ProfileBackground;
+export default ProfileText;
