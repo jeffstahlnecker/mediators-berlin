@@ -27,7 +27,7 @@ const PureMediators = () => {
                   </SetImage>
                   <SetName>
                     <h4>Miles Bell</h4>
-                    <NameTitle>Clueless Student</NameTitle>
+                    <NameTitle>Student</NameTitle>
                   </SetName>
                   <SetDescription>
                     <Description>
@@ -80,7 +80,7 @@ const PureMediators = () => {
                   </SetImage>
                   <SetName>
                     <h4>Miles Bell</h4>
-                    <NameTitle>Clueless Student</NameTitle>
+                    <NameTitle>Student</NameTitle>
                   </SetName>
                   <SetDescription>
                     <Description>
@@ -133,7 +133,7 @@ const PureMediators = () => {
                   </SetImage>
                   <SetName>
                     <h4>Miles Bell</h4>
-                    <NameTitle>Clueless Student</NameTitle>
+                    <NameTitle>Student</NameTitle>
                   </SetName>
                   <SetDescription>
                     <Description>
@@ -186,7 +186,7 @@ const PureMediators = () => {
                   </SetImage>
                   <SetName>
                     <h4>Miles Bell</h4>
-                    <NameTitle>Clueless Student</NameTitle>
+                    <NameTitle>Student</NameTitle>
                   </SetName>
                   <SetDescription>
                     <Description>
@@ -239,7 +239,7 @@ const PureMediators = () => {
                   </SetImage>
                   <SetName>
                     <h4>Miles Bell</h4>
-                    <NameTitle>Clueless Student</NameTitle>
+                    <NameTitle>Student</NameTitle>
                   </SetName>
                   <SetDescription>
                     <Description>
@@ -292,7 +292,7 @@ const PureMediators = () => {
                   </SetImage>
                   <SetName>
                     <h4>Miles Bell</h4>
-                    <NameTitle>Clueless Student</NameTitle>
+                    <NameTitle>Student</NameTitle>
                   </SetName>
                   <SetDescription>
                     <Description>
