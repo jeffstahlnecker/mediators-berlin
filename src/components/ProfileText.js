@@ -105,12 +105,13 @@ const PureProfileBackground = () => {
         </BackgroundPatterns>
       </PatternContainer>
       <TextContainer>
-        <TitleBox>
+        {/*        <TitleBox>
           <TopTitle>This is Text</TopTitle>
           <MainTitle>This is Title</MainTitle>
           <Subtitle>Subtitle is awesome</Subtitle>
-        </TitleBox>
+        </TitleBox> */}
         <MainText>
+          <h3>Everything you need to get up and running</h3>
           <p>
             Faucibus commodo massa rhoncus, volutpat. <strong>Dignissim</strong>{" "}
             sed <strong>eget risus enim</strong>. Mattis mauris semper sed amet

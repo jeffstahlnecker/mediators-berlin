@@ -1,6 +1,6 @@
 import React from "react";
 import { useStaticQuery, graphql } from "gatsby";
-import tw from "twin.macro";
+import tw, { styled } from "twin.macro";
 import BackgroundImage from "gatsby-background-image";
 import Img from "gatsby-image";
 
@@ -61,8 +61,9 @@ export const ProfileHead = ({ ...props }) => {
 const Section = tw.div`
 `;
 
-const BackImage = tw(BackgroundImage)`
-h-64`;
+const BackImage = styled(BackgroundImage)`
+  height: 50vh;
+`;
 
 const ProfileContainer = tw.div`
 grid grid-cols-12 grid-flow-row-dense bg-green-300

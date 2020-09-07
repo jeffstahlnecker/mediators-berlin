@@ -88,7 +88,7 @@ export const Navbar = () => {
 };
 
 const Nav = tw.div`
-bg-white shadow
+bg-white shadow fixed z-10 w-screen
 `;
 
 const Container = tw.div`
