@@ -5,12 +5,6 @@ import BackgroundImage from "gatsby-background-image";
 import Img from "gatsby-image";
 
 export const PureProfileHead = ({ data }) => {
-  // to include:
-  // Profile Picture
-  // Contact Information
-  // Background Image??
-  // Schwerpunkte
-
   console.log(data.logo);
 
   return (
@@ -66,7 +60,7 @@ const BackImage = styled(BackgroundImage)`
 `;
 
 const ProfileContainer = tw.div`
-grid grid-cols-12 grid-flow-row-dense bg-green-300
+flex flex-col items-center lg:grid lg:grid-cols-12 lg:grid-flow-row-dense bg-green-300
 `;
 
 const Image = tw.div`
@@ -78,7 +72,7 @@ h-1 w-auto shadow-2xl rounded -mt-40
 `;
 
 const HeadText = tw.div`
-col-start-4 col-end-8 flex flex-col p-8 h-auto h-48
+col-start-4 col-end-8 flex flex-col p-4 lg:p-8 h-auto lg:h-48
 `;
 
 const Name = tw.h1`
@@ -93,7 +87,7 @@ const Phone = tw.p`
 `;
 
 const SpecialtyContainer = tw.div`
-col-start-9 col-end-12 flex flex-col items-end justify-center
+lg:col-start-9 lg:col-end-12 flex flex-row lg:flex-col flex-wrap lg:items-end justify-center pb-6
 `;
 
 const Pill = tw.div`

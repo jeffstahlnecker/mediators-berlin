@@ -1,7 +1,9 @@
 import React from "react";
 import tw from "twin.macro";
+import Img from "gatsby-image";
+import { graphql, useStaticQuery } from "gatsby";
 
-const PureContent = () => {
+const PureContent = ({ data }) => {
   return (
     <Section>
       <Container>
@@ -48,14 +50,12 @@ const PureContent = () => {
               <figure>
                 <Image>
                   <ThePicture
-                    src="https://images.unsplash.com/photo-1546913199-55e06682967e?ixlib=rb-1.2.1&auto=format&fit=crop&crop=focalpoint&fp-x=.735&fp-y=.55&w=1184&h=1376&q=80"
+                    fluid={data.file.childImageSharp.fluid}
                     alt="This is a picture"
-                    width="1184"
-                    height="1376"
                     className="rounded-lg shadow-lg object-cover object-center absolute inset-0 w-full h-full lg:static lg:h-auto"
                   />
                 </Image>
-                <FigCaption>
+                {/*                <FigCaption>
                   <svg
                     className="flex-none w-5 h-5 mr-2 text-gray-400"
                     viewBox="0 0 20 20"
@@ -68,7 +68,7 @@ const PureContent = () => {
                     />
                   </svg>
                   Photograph by Marcus O’Leary
-                </FigCaption>
+                </FigCaption> */}
               </figure>
             </ImageContainer>
           </Pattern>
@@ -130,7 +130,18 @@ const PureContent = () => {
 };
 
 export const Content = ({ ...props }) => {
-  return <PureContent {...props} />;
+  const data = useStaticQuery(graphql`
+    query {
+      file(relativePath: { eq: "face.jpg" }) {
+        childImageSharp {
+          fluid {
+            ...GatsbyImageSharpFluid_withWebp_tracedSVG
+          }
+        }
+      }
+    }
+  `);
+  return <PureContent {...props} data={data} />;
 };
 
 const Section = tw.div`
@@ -166,7 +177,7 @@ const Image = tw.div`
 relative pb-7/12 lg:pb-0
 `;
 
-const ThePicture = tw.img`
+const ThePicture = tw(Img)`
 rounded-lg shadow-lg object-cover object-center absolute inset-0 w-full h-full lg:static lg:h-auto`;
 
 const FigCaption = tw.figcaption`

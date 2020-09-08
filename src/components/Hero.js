@@ -21,7 +21,7 @@ export const PureHero = ({ data, children }) => {
 export const Hero = () => {
   const data = useStaticQuery(graphql`
     query {
-      file(relativePath: { eq: "chance.jpg" }) {
+      file(relativePath: { eq: "street.jpg" }) {
         childImageSharp {
           fluid {
             ...GatsbyImageSharpFluid_withWebp_tracedSVG
