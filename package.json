@@ -53,6 +53,7 @@
     "gatsby-plugin-styled-components": "^3.3.10",
     "gatsby-plugin-svg-sprite": "^2.0.1",
     "gatsby-source-filesystem": "^2.3.24",
+    "gatsby-transformer-remark": "^2.8.34",
     "gatsby-transformer-sharp": "^2.5.13",
     "jest-axe": "^3.5.0",
     "postcss-import": "^12.0.1",

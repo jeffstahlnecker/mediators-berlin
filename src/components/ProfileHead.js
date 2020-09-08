@@ -5,8 +5,6 @@ import BackgroundImage from "gatsby-background-image";
 import Img from "gatsby-image";
 
 export const PureProfileHead = ({ data }) => {
-  console.log(data.logo);
-
   return (
     <Section>
       <BackImage fluid={data.back.childImageSharp.fluid} />
