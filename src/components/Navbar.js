@@ -23,12 +23,6 @@ const PureNavbar = ({ data }) => {
             <Menu>
               <MenuItem to="/profile">Profile</MenuItem>
             </Menu>
-            <Menu>
-              <MenuItem to="/">MenuItem</MenuItem>
-            </Menu>
-            <Menu>
-              <MenuItem to="/">MenuItem</MenuItem>
-            </Menu>
           </Flex>
           <MobileMenu>
             <MenuButton onClick={() => setIsOn(!isOn)}>

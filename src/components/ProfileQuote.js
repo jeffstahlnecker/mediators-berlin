@@ -1,7 +1,7 @@
 import React from "react";
 import tw from "twin.macro";
 
-export const PureProfileMeditation = () => {
+export const PureProfileMeditation = ({ quote }) => {
   //  // Was bedeutet Mediation für mich
   //   // Was mich antreibt
   return (
@@ -46,9 +46,8 @@ export const PureProfileMeditation = () => {
           <Blockquote>
             <ParagraphWrapper>
               <p>
-                &ldquo; Lorem ipsum dolor sit amet, consectetur adipisicing
-                elit. Beatae fugiat hic incidunt nam placeat, provident
-                recusandae! Autem blanditiis!
+                {quote ||
+                  "&ldquo; Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae fugiat hic incidunt nam placeat, provident recusandae! Autem blanditiis!"}
               </p>
             </ParagraphWrapper>
           </Blockquote>

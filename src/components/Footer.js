@@ -8,19 +8,7 @@ export const PureFooter = () => {
       <Section>
         <Menu>
           <MenuItem>
-            <TheLink to="/">MenuLink</TheLink>
-          </MenuItem>
-          <MenuItem>
-            <TheLink to="/">MenuLink</TheLink>
-          </MenuItem>
-          <MenuItem>
-            <TheLink to="/">MenuLink</TheLink>
-          </MenuItem>
-          <MenuItem>
-            <TheLink to="/">MenuLink</TheLink>
-          </MenuItem>
-          <MenuItem>
-            <TheLink to="/">MenuLink</TheLink>
+            <TheLink to="/datenschutz">Datenschutz</TheLink>
           </MenuItem>
         </Menu>
         <Social>

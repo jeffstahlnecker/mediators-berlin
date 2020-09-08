@@ -4,24 +4,33 @@ import tw, { styled } from "twin.macro";
 import BackgroundImage from "gatsby-background-image";
 import Img from "gatsby-image";
 
-export const PureProfileHead = ({ data }) => {
+export const PureProfileHead = ({
+  data,
+  coverImage,
+  profileImage,
+  name,
+  email,
+  phone,
+  specialties,
+}) => {
   return (
     <Section>
-      <BackImage fluid={data.back.childImageSharp.fluid} />
+      <BackImage fluid={coverImage || data.back.childImageSharp.fluid} />
       <ProfileContainer>
         <Image>
-          <ProfileImage fixed={data.profile.childImageSharp.fixed} />
+          <ProfileImage
+            fixed={profileImage || data.profile.childImageSharp.fixed}
+          />
         </Image>
         <HeadText>
-          <Name>Donna Noble</Name>
-          <Email>noble@chance-im-konflikt.de</Email>
-          <Phone>+49 1111 11111</Phone>
+          <Name>{name || "Donna Noble"}</Name>
+          <Email>{email || "noble@chance-im-konflikt.de"}</Email>
+          <Phone>{phone}</Phone>
         </HeadText>
         <SpecialtyContainer>
-          <Pill>Specialty</Pill>
-          <Pill>Longer Specialty</Pill>
-          <Pill>Very Long Specialty</Pill>
-          <Pill>Specialty</Pill>
+          {specialties?.map(specialty => {
+            return <Pill>{specialty}</Pill>;
+          })}
         </SpecialtyContainer>
       </ProfileContainer>
     </Section>

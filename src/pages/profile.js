@@ -1,7 +1,7 @@
 import React from "react";
 import Layout from "../components/Layout";
 import ProfileHead from "../components/ProfileHead";
-import ProfileText from "../components/ProfileText";
+import Text from "../components/Text";
 import ProfileQuote from "../components/ProfileQuote";
 
 export default function Home() {
@@ -9,7 +9,7 @@ export default function Home() {
     <Layout>
       <ProfileHead />
       <ProfileQuote />
-      <ProfileText />
+      <Text />
     </Layout>
   );
 }
