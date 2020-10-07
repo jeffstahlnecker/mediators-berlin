@@ -5,14 +5,15 @@ import ProfileHead from "../components/ProfileHead";
 import Text from "../components/Text";
 import ProfileQuote from "../components/ProfileQuote";
 
-
-export default function Home({data}) {
+export default function Home({ data }) {
   const profile = data.markdownRemark;
 
   return (
     <Layout>
       <ProfileHead
-        coverImage={profile.frontmatter.coverPicture.childImageSharp.fluid || ""}
+        coverImage={
+          profile.frontmatter.coverPicture.childImageSharp.fluid || ""
+        }
         profileImage={profile.frontmatter.profilePicture.childImageSharp.fixed}
         name={profile.frontmatter.name}
         email={profile.frontmatter.email}
@@ -25,10 +26,9 @@ export default function Home({data}) {
   );
 }
 
-
 export const pageQuery = graphql`
-  query {
-    markdownRemark(frontmatter: { name: { eq: "Sandra Krull" } }) {
+  query($slug: String) {
+    markdownRemark(frontmatter: { slug: { eq: $slug } }) {
       frontmatter {
         profilePicture {
           childImageSharp {
