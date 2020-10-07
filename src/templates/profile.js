@@ -1,17 +1,18 @@
 import React from "react";
+import { graphql } from "gatsby";
 import Layout from "../components/Layout";
 import ProfileHead from "../components/ProfileHead";
 import Text from "../components/Text";
 import ProfileQuote from "../components/ProfileQuote";
-import { graphql } from "gatsby";
 
-export default function Home({ data }) {
+
+export default function Home({data}) {
   const profile = data.markdownRemark;
 
   return (
     <Layout>
       <ProfileHead
-        coverImage={profile.frontmatter.coverImage.childImageSharp.fluid || ""}
+        coverImage={profile.frontmatter.coverPicture.childImageSharp.fluid || ""}
         profileImage={profile.frontmatter.profilePicture.childImageSharp.fixed}
         name={profile.frontmatter.name}
         email={profile.frontmatter.email}
@@ -24,14 +25,22 @@ export default function Home({ data }) {
   );
 }
 
+
 export const pageQuery = graphql`
-  query($name: String) {
-    markdownRemark(frontmatter: { name: { eq: $name } }) {
+  query {
+    markdownRemark(frontmatter: { name: { eq: "Sandra Krull" } }) {
       frontmatter {
         profilePicture {
           childImageSharp {
             fixed(width: 200) {
-              src
+              ...GatsbyImageSharpFixed_withWebp_tracedSVG
+            }
+          }
+        }
+        coverPicture {
+          childImageSharp {
+            fluid {
+              ...GatsbyImageSharpFluid_withWebp_tracedSVG
             }
           }
         }

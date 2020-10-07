@@ -29,7 +29,7 @@ export const PureProfileHead = ({
         </HeadText>
         <SpecialtyContainer>
           {specialties?.map(specialty => {
-            return <Pill>{specialty}</Pill>;
+            return <Pill key={specialty}>{specialty}</Pill>;
           })}
         </SpecialtyContainer>
       </ProfileContainer>
