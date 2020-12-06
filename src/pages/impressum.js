@@ -1,28 +1,25 @@
 import React from "react";
 import { graphql } from "gatsby";
-import Text from "../components/Text";
 import Layout from "../components/Layout";
 import PageHeading from "../components/PageHeading";
+import Text from "../components/Text";
 
-const Datenschutz = ({ data }) => {
-  const content = data.directus.items.datenschutz;
+export default function Impressum({ data }) {
+  const { content } = data.directus.items.impressum;
   return (
     <Layout>
-      <PageHeading t={content.title} />
-      <Text text={content.text} />
+      <PageHeading t="Impressum" />
+      <Text content={content} />
     </Layout>
   );
-};
-
-export default Datenschutz;
-
+}
 export const query = graphql`
   query {
     directus {
       items {
-        datenschutz {
-          text
-          title
+        impressum {
+          content
+          id
         }
       }
     }

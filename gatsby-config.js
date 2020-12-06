@@ -21,6 +21,15 @@ module.exports = {
     "gatsby-plugin-svg-sprite",
     "gatsby-plugin-styled-components",
     {
+      resolve: "gatsby-source-graphql",
+      options: {
+        typeName: "directus2",
+        fieldName: "directus",
+        url: "https://mediator.stahlnecker.me/graphql",
+      },
+    },
+
+    {
       resolve: `gatsby-transformer-remark`,
       options: {
         // CommonMark mode (default: true)

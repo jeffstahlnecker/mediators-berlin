@@ -3,12 +3,11 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
   const profileTemplate = require.resolve(`./src/templates/profile.js`);
   const result = await graphql(`
     {
-      allMarkdownRemark(filter: { frontmatter: { slug: { ne: null } } }) {
-        edges {
-          node {
-            frontmatter {
-              slug
-            }
+      directus {
+        items {
+          mediators {
+            id
+            slug
           }
         }
       }
@@ -19,13 +18,15 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
     reporter.panicOnBuild(`Error while running GraphQL query.`);
     return;
   }
-  result.data.allMarkdownRemark.edges.forEach(({ node }) => {
+  const { mediators } = result.data.directus.items;
+
+  mediators.forEach(mediator => {
     createPage({
-      path: node.frontmatter.slug,
+      path: mediator.slug,
       component: profileTemplate,
       context: {
         // additional data can be passed via context
-        slug: node.frontmatter.slug,
+        slug: mediator.slug,
       },
     });
   });

@@ -20,9 +20,6 @@ const PureNavbar = ({ data }) => {
             <Menu>
               <MenuItem to="/">Home</MenuItem>
             </Menu>
-            <Menu>
-              <MenuItem to="/profile">Profile</MenuItem>
-            </Menu>
           </Flex>
           <MobileMenu>
             <MenuButton onClick={() => setIsOn(!isOn)}>
@@ -58,7 +55,6 @@ const PureNavbar = ({ data }) => {
         <div className={`${isOn ? "block" : "hidden"} md:hidden`}>
           <MobileContainer>
             <MobileLink to="/">Home</MobileLink>
-            <MobileLink to="/profile">Profile</MobileLink>
           </MobileContainer>
         </div>
       </Container>
@@ -82,7 +78,7 @@ export const Navbar = () => {
 };
 
 const Nav = tw.div`
-bg-white shadow fixed z-10 w-screen
+bg-white shadow fixed z-20 w-screen
 `;
 
 const Container = tw.div`

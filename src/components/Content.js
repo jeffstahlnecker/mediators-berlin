@@ -1,16 +1,16 @@
 import React from "react";
 import tw from "twin.macro";
-import Img from "gatsby-image";
 import { graphql, useStaticQuery } from "gatsby";
 
 const PureContent = ({ data }) => {
+  const { home } = data.directus.items;
   return (
     <Section>
       <Container>
         <HiddenBlock />
         <Title>
-          <SmallTitleText>Über Mediation</SmallTitleText>
-          <TitleText>Was ist Mediation? </TitleText>
+          <SmallTitleText>{home.small_title}</SmallTitleText>
+          <TitleText>{home.title}</TitleText>
         </Title>
         <PictureSection>
           <Pattern>
@@ -50,7 +50,7 @@ const PureContent = ({ data }) => {
               <figure>
                 <Image>
                   <ThePicture
-                    fluid={data.file.childImageSharp.fluid}
+                    src={`https://mediator.stahlnecker.me/assets/${home.second_photo.id}`}
                     alt="This is a picture"
                     className="rounded-lg shadow-lg object-cover object-center absolute inset-0 w-full h-full lg:static lg:h-auto"
                   />
@@ -75,52 +75,9 @@ const PureContent = ({ data }) => {
           <div>
             <TextSection>
               <BlurbSection>
-                <BlurbText>
-                  Die Mediation ist eine Methode zur Vermittlung in
-                  Konfliktfällen, die der gemeinsamen und konstruktiven
-                  Lösungsfindung dient.
-                </BlurbText>
+                <BlurbText>{home.blurb}</BlurbText>
               </BlurbSection>
-              <MainText>
-                <p>
-                  Sie ist ein vertrauliches und strukturiertes Verfahren, in dem
-                  die beteiligten Parteien (Mediant*innen) freiwillig,
-                  eigenverantwortlich und wertschätzend eine einvernehmliche
-                  Beilegung ihres Konflikts anstreben.
-                </p>
-                <p>
-                  Der*die Mediator*in unterstützt die Mediant*innen hierbei und
-                  leitet die Gespräche als ergebnisoffenen Prozess. Er*sIe
-                  stellt einen sicheren und schützenden Rahmen her, in dem die
-                  Mediant*innen sich offen, ehrlich und kooperativ begegnen
-                  können. Der*die Mediator*in ist allparteilich, steht also auf
-                  der Seite aller Beteiligten. Er*sie unterstützt die
-                  Mediant*innen bei der Erarbeitung von Lösungsoptionen und
-                  Vereinbarungen, so dass für alle Parteien eine win-win
-                  Situation entstehen kann.
-                </p>
-                <h3>Was ist die Mediation nicht?</h3>
-                <p>
-                  Eine Mediation umfasst weder psychologische, therapeutische
-                  noch juristische Beratung, noch stellt sie ein Coaching dar.
-                </p>
-                <h2>Welche Vorteile kann mir eine Mediation bringen?</h2>
-                <p>
-                  Konflikte gehören zum Alltag und werden oft als belastend
-                  wahrgenommen. Eine konstruktive Konfliktlösung kann alle
-                  Beteiligten weiterbringen und ein harmonisches, oder zumindest
-                  friedvolles, Miteinander ermöglichen.
-                </p>
-                <p>
-                  Wenn Sie Ihren aktuellen Konflikt als Möglichkeit zu
-                  persönlichem Wachstum und positiver Veränderung betrachten
-                  möchten, ist eine Mediation vermutlich der richtige Weg für
-                  Sie. Wenn Sie das Gespräch mit Ihrem Gegenüber wieder in Gang
-                  bringen und/oder einen tragfähigen Konsens finden möchten,
-                  stehen Ihnen die Mediator*innen in unserem Netzwerk
-                  professionell zur Seite.
-                </p>
-              </MainText>
+              <MainText dangerouslySetInnerHTML={{ __html: home.content }} />
             </TextSection>
           </div>
         </PictureSection>
@@ -136,6 +93,22 @@ export const Content = ({ ...props }) => {
         childImageSharp {
           fluid {
             ...GatsbyImageSharpFluid_withWebp_tracedSVG
+          }
+        }
+      }
+      directus {
+        items {
+          home {
+            blurb
+            content
+            cover_photo {
+              id
+            }
+            second_photo {
+              id
+            }
+            small_title
+            title
           }
         }
       }
@@ -177,9 +150,10 @@ const Image = tw.div`
 relative pb-7/12 lg:pb-0
 `;
 
-const ThePicture = tw(Img)`
+const ThePicture = tw.img`
 rounded-lg shadow-lg object-cover object-center absolute inset-0 w-full h-full lg:static lg:h-auto`;
 
+// eslint-disable-next-line no-unused-vars
 const FigCaption = tw.figcaption`
 flex mt-3 text-sm text-gray-500`;
 

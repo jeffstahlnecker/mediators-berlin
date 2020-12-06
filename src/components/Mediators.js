@@ -4,7 +4,7 @@ import { graphql, useStaticQuery, Link } from "gatsby";
 import { Pill } from "./Utils";
 
 const PureMediators = ({ data }) => {
-  const mediators = data.allMarkdownRemark.nodes;
+  const { mediators } = data.directus.items;
   return (
     <Container>
       <SetScreen>
@@ -20,29 +20,27 @@ const PureMediators = ({ data }) => {
           </ContentContainer>
           <MediatorContainer>
             <MediatorList>
-              {mediators.map(item => {
-                const mediator = item.frontmatter;
+              {mediators.map(mediator => {
+                const german = mediator.translations[0];
                 return (
-                  <li key={item.id}>
+                  <li key={mediator.id}>
                     <Link to={`/${mediator.slug}`}>
                       <SetCard>
                         <SetImage>
                           <CardImage
-                            src={
-                              mediator.profilePicture.childImageSharp.fixed.src
-                            }
+                            src={`https://mediator.stahlnecker.me/assets/${mediator.profile_picture.id}`}
                             alt="a person"
                           />
                         </SetImage>
                         <SetName>
                           <h4>{mediator.name}</h4>
-                          <NameTitle>{mediator.tagline}</NameTitle>
+                          <NameTitle>{german.tagline}</NameTitle>
                         </SetName>
                         <SetDescription>
-                          <Description>{mediator.excerpt}</Description>
+                          <Description>{german.excerpt}</Description>
                         </SetDescription>
                         <SetIcons>
-                          {mediator.specialties.map(specialty => {
+                          {german.specialties.map(specialty => {
                             return (
                               <li key={specialty}>
                                 <Pill>{specialty}</Pill>
@@ -68,21 +66,36 @@ const PureMediators = ({ data }) => {
 export const Mediators = ({ ...props }) => {
   const data = useStaticQuery(graphql`
     query {
-      allMarkdownRemark(filter: { frontmatter: { name: { ne: null } } }) {
-        nodes {
-          id
-          frontmatter {
+      directus {
+        items {
+          mediators {
+            id
+            status
             name
             slug
-            tagline
-            excerpt
-            specialties
-            profilePicture {
-              childImageSharp {
-                fixed {
-                  src
-                }
+            phone
+            email
+            translations {
+              tagline
+              excerpt
+              quote
+              content
+              specialties
+              languages_code {
+                name
+                code
               }
+            }
+
+            profile_picture {
+              id
+              filename_download
+              filename_disk
+            }
+            cover_photo {
+              id
+              filename_download
+              filename_disk
             }
           }
         }
@@ -120,7 +133,7 @@ const SetCard = tw.div`
 space-y-4`;
 
 const SetImage = tw.div`
-relative pb-2/3`;
+relative pb-2/3 h-96`;
 
 const CardImage = tw.img`
 absolute object-cover h-full w-full shadow-lg rounded-lg`;

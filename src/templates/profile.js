@@ -6,53 +6,59 @@ import Text from "../components/Text";
 import ProfileQuote from "../components/ProfileQuote";
 
 export default function Home({ data }) {
-  const profile = data.markdownRemark;
+  const mediator = data.directus.items.mediators[0];
+  const german = mediator.translations[0];
 
   return (
     <Layout>
       <ProfileHead
         coverImage={
-          profile.frontmatter.coverPicture.childImageSharp.fluid || ""
+          `https://mediator.stahlnecker.me/assets/${mediator.cover_photo?.id}` ||
+          ""
         }
-        profileImage={profile.frontmatter.profilePicture.childImageSharp.fixed}
-        name={profile.frontmatter.name}
-        email={profile.frontmatter.email}
-        phone={profile.frontmatter.phone}
-        specialties={profile.frontmatter.specialties}
+        profileImage={
+          `https://mediator.stahlnecker.me/assets/${mediator.profile_picture?.id}` ||
+          ""
+        }
+        name={mediator.name}
+        email={mediator.email}
+        phone={mediator.phone}
+        specialties={german.specialties}
       />
-      <ProfileQuote quote={profile.frontmatter.quote} />
-      <Text content={profile.html} />
+      <ProfileQuote quote={german.quote} />
+      <Text content={german.content} />
     </Layout>
   );
 }
 
 export const pageQuery = graphql`
   query($slug: String) {
-    markdownRemark(frontmatter: { slug: { eq: $slug } }) {
-      frontmatter {
-        profilePicture {
-          childImageSharp {
-            fixed(width: 200) {
-              ...GatsbyImageSharpFixed_withWebp_tracedSVG
+    directus {
+      items {
+        mediators(filter: { slug: { _eq: $slug } }) {
+          id
+          name
+          phone
+          email
+          cover_photo {
+            id
+          }
+          profile_picture {
+            id
+          }
+          translations {
+            content
+            id
+            quote
+            specialties
+            tagline
+            languages_code {
+              code
+              name
             }
           }
         }
-        coverPicture {
-          childImageSharp {
-            fluid {
-              ...GatsbyImageSharpFluid_withWebp_tracedSVG
-            }
-          }
-        }
-        name
-        phone
-        email
-        specialties
-        quote
-        tagline
-        slug
       }
-      html
     }
   }
 `;

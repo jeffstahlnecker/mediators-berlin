@@ -1,11 +1,8 @@
 import React from "react";
 import { useStaticQuery, graphql } from "gatsby";
-import tw, { styled } from "twin.macro";
-import BackgroundImage from "gatsby-background-image";
-import Img from "gatsby-image";
+import tw from "twin.macro";
 
 export const PureProfileHead = ({
-  data,
   coverImage,
   profileImage,
   name,
@@ -15,13 +12,14 @@ export const PureProfileHead = ({
 }) => {
   return (
     <Section>
-      <BackImage fluid={coverImage || data.back.childImageSharp.fluid} />
+      <BackImageWrap>
+        <BackImage src={coverImage} alt={`${name} mediator cover photo`} />
+      </BackImageWrap>
       <ProfileContainer>
         <Image>
-          <ProfileImage
-            fixed={profileImage || data.profile.childImageSharp.fixed}
-          />
+          <ProfileImage src={profileImage} alt={name} />
         </Image>
+
         <HeadText>
           <Name>{name || "Donna Noble"}</Name>
           <Email>{email || "noble@chance-im-konflikt.de"}</Email>
@@ -62,8 +60,10 @@ export const ProfileHead = ({ ...props }) => {
 const Section = tw.div`
 `;
 
-const BackImage = styled(BackgroundImage)`
-  height: 50vh;
+const BackImageWrap = tw.div`relative w-screen h-96`;
+
+const BackImage = tw.img`
+ w-full h-full object-cover
 `;
 
 const ProfileContainer = tw.div`
@@ -71,15 +71,15 @@ flex flex-col items-center lg:grid lg:grid-cols-12 lg:grid-flow-row-dense bg-gre
 `;
 
 const Image = tw.div`
-col-start-2 col-end-4 gap-12
+col-start-2 col-end-4 gap-12 z-10
 `;
 
-const ProfileImage = tw(Img)`
-h-1 w-auto shadow-2xl rounded -mt-40
+const ProfileImage = tw.img`
+h-64 w-auto shadow-2xl rounded -mt-40 z-10
 `;
 
 const HeadText = tw.div`
-col-start-4 col-end-8 flex flex-col p-4 lg:p-8 h-auto lg:h-48
+col-start-4 col-end-8 flex flex-col p-4 lg:p-8 h-auto lg:h-48 z-10
 `;
 
 const Name = tw.h1`

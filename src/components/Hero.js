@@ -1,20 +1,16 @@
 import React from "react";
 import { graphql, useStaticQuery } from "gatsby";
-import styled from "styled-components";
-import BackgroundImage from "gatsby-background-image";
-import { setColor, media } from "../Style";
 
-export const PureHero = ({ data, children }) => {
+export const PureHero = ({ data }) => {
+  const coverPhoto = data.directus.items.home.cover_photo.id;
   return (
-    <Container>
-      <BackgroundImage
-        fluid={data.file.childImageSharp.fluid}
-        className="backgroundImage"
-        backgroundColor={setColor.primaryColor}
-      >
-        {children}
-      </BackgroundImage>
-    </Container>
+    <div className="relative w-screen h-96">
+      <img
+        className="w-full h-full object-cover"
+        src={`https://mediator.stahlnecker.me/assets/${coverPhoto}`}
+        alt="background"
+      />
+    </div>
   );
 };
 
@@ -28,25 +24,18 @@ export const Hero = () => {
           }
         }
       }
+      directus {
+        items {
+          home {
+            cover_photo {
+              id
+            }
+          }
+        }
+      }
     }
   `);
   return <PureHero data={data} />;
 };
-
-const Container = styled.div`
-  .backgroundImage {
-    width: 100%;
-    background-position: bottom center;
-    background-repeat: repeat-y;
-    background-size: cover;
-    height: 50vh;
-    color: ${setColor.primaryColor};
-  }
-  ${media.portraitTablet`
-    .backgroundImage {
-    height: 70vh;
-  }
-	`};
-`;
 
 export default Hero;
