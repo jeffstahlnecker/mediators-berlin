@@ -4,13 +4,14 @@ import { graphql, useStaticQuery } from "gatsby";
 
 const PureContent = ({ data }) => {
   const { home } = data.directus.items;
+  const translated = home.translations[0];
   return (
     <Section>
       <Container>
         <HiddenBlock />
         <Title>
-          <SmallTitleText>{home.small_title}</SmallTitleText>
-          <TitleText>{home.title}</TitleText>
+          <SmallTitleText>{translated.small_title}</SmallTitleText>
+          <TitleText>{translated.title}</TitleText>
         </Title>
         <PictureSection>
           <Pattern>
@@ -50,7 +51,7 @@ const PureContent = ({ data }) => {
               <figure>
                 <Image>
                   <ThePicture
-                    src={`https://mediator.stahlnecker.me/assets/${home.second_photo.id}`}
+                    src={`https://mediator.stahlnecker.me/assets/${home.second_photo?.id}`}
                     alt="This is a picture"
                     className="rounded-lg shadow-lg object-cover object-center absolute inset-0 w-full h-full lg:static lg:h-auto"
                   />
@@ -75,9 +76,11 @@ const PureContent = ({ data }) => {
           <div>
             <TextSection>
               <BlurbSection>
-                <BlurbText>{home.blurb}</BlurbText>
+                <BlurbText>{translated.blurb}</BlurbText>
               </BlurbSection>
-              <MainText dangerouslySetInnerHTML={{ __html: home.content }} />
+              <MainText
+                dangerouslySetInnerHTML={{ __html: translated.content }}
+              />
             </TextSection>
           </div>
         </PictureSection>
@@ -99,16 +102,19 @@ export const Content = ({ ...props }) => {
       directus {
         items {
           home {
-            blurb
-            content
             cover_photo {
               id
             }
             second_photo {
               id
             }
-            small_title
-            title
+            translations {
+              blurb
+              content
+
+              small_title
+              title
+            }
           }
         }
       }

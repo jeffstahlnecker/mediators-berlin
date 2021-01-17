@@ -5,11 +5,11 @@ import Layout from "../components/Layout";
 import PageHeading from "../components/PageHeading";
 
 const Datenschutz = ({ data }) => {
-  const content = data.directus.items.datenschutz;
+  const content = data.directus.items.datenschutz.translations[0];
   return (
     <Layout>
       <PageHeading t={content.title} />
-      <Text text={content.text} />
+      <Text content={content.text} />
     </Layout>
   );
 };
@@ -21,8 +21,13 @@ export const query = graphql`
     directus {
       items {
         datenschutz {
-          text
-          title
+          translations {
+            text
+            title
+            languages_code {
+              code
+            }
+          }
         }
       }
     }

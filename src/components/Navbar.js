@@ -19,6 +19,7 @@ const PureNavbar = ({ data }) => {
             </Logo>
             <Menu>
               <MenuItem to="/">Home</MenuItem>
+              <MenuItem to="/netzwerk">Netzwerk</MenuItem>
             </Menu>
           </Flex>
           <MobileMenu>
@@ -55,6 +56,7 @@ const PureNavbar = ({ data }) => {
         <div className={`${isOn ? "block" : "hidden"} md:hidden`}>
           <MobileContainer>
             <MobileLink to="/">Home</MobileLink>
+            <MobileLink to="/netzwerk">Netzwerk</MobileLink>
           </MobileContainer>
         </div>
       </Container>

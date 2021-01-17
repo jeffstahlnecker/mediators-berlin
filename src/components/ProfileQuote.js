@@ -47,7 +47,7 @@ export const PureProfileMeditation = ({ quote }) => {
             <ParagraphWrapper>
               <p>
                 {quote ||
-                  "&ldquo; Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae fugiat hic incidunt nam placeat, provident recusandae! Autem blanditiis!"}
+                  "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae fugiat hic incidunt nam placeat, provident recusandae! Autem blanditiis!"}
               </p>
             </ParagraphWrapper>
           </Blockquote>

@@ -12,10 +12,7 @@ export default function Home({ data }) {
   return (
     <Layout>
       <ProfileHead
-        coverImage={
-          `https://mediator.stahlnecker.me/assets/${mediator.cover_photo?.id}` ||
-          ""
-        }
+        coverImage={mediator.cover_photo?.id}
         profileImage={
           `https://mediator.stahlnecker.me/assets/${mediator.profile_picture?.id}` ||
           ""
@@ -24,8 +21,13 @@ export default function Home({ data }) {
         email={mediator.email}
         phone={mediator.phone}
         specialties={german.specialties}
+        primaryColor={mediator.color}
+        secondaryColor={mediator.secondary_color}
+        textColor={mediator.text_color}
+        pillColor={mediator.specialties_background_color}
+        pillTextColor={mediator.specialties_text_color}
       />
-      <ProfileQuote quote={german.quote} />
+      {german.quote ? <ProfileQuote quote={german.quote} /> : ""}
       <Text content={german.content} />
     </Layout>
   );
@@ -38,8 +40,13 @@ export const pageQuery = graphql`
         mediators(filter: { slug: { _eq: $slug } }) {
           id
           name
+          color
+          secondary_color
           phone
           email
+          text_color
+          specialties_background_color
+          specialties_text_color
           cover_photo {
             id
           }

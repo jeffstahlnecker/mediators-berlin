@@ -5,7 +5,7 @@ import PageHeading from "../components/PageHeading";
 import Text from "../components/Text";
 
 export default function Impressum({ data }) {
-  const { content } = data.directus.items.impressum;
+  const content = data.directus.items.impressum.translations[0];
   return (
     <Layout>
       <PageHeading t="Impressum" />
@@ -18,8 +18,10 @@ export const query = graphql`
     directus {
       items {
         impressum {
-          content
-          id
+          translations {
+            content
+            id
+          }
         }
       }
     }
