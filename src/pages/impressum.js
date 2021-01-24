@@ -9,7 +9,7 @@ export default function Impressum({ data }) {
   return (
     <Layout>
       <PageHeading t="Impressum" />
-      <Text content={content} />
+      <Text content={content.content} />
     </Layout>
   );
 }
