@@ -11,8 +11,7 @@ require("dotenv").config({
 module.exports = {
   siteMetadata: {
     title: "Chance im Konflikt",
-    description:
-        "Site Description.",
+    description: "Site Description.",
     author: "Jeff Stahlnecker",
     image: "/defaultImg.png",
     siteUrl: "https://www.chance-im-konflikt.de",
@@ -32,16 +31,6 @@ module.exports = {
         typeName: "directus2",
         fieldName: "directus",
         url: "https://mediator.stahlnecker.me/graphql",
-      },
-    },
-    {
-      resolve: `gatsby-plugin-cookiehub-banner`,
-      options: {
-        // The ID is part of the CookieHub URL: https://cookiehub.net/cc/YOUR_COOKIEHUB_ID.js
-        cookieHubId: process.env.COOKIE_HUB,
-        // Optional parameter (default false) - Use new v2 API.
-        cookieHubV2Api: true,
-        // Categories configured with CookieHub
       },
     },
     {
