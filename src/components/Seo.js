@@ -15,7 +15,7 @@ const getData = graphql`
   }
 `
 
-const SEO = ({title, description, language, image, pageUrl, post}) => {
+const SEO = ({title, description, language, image, pageUrl, slug}) => {
     const {site} = useStaticQuery(getData)
     const {
         siteDesc,
@@ -53,7 +53,7 @@ const SEO = ({title, description, language, image, pageUrl, post}) => {
         {/* Language References */}
         <link
           rel="alternate"
-          href={`https://chance-im-konflikt.de/${post}`}
+          href={`https://chance-im-konflikt.de/${slug}`}
           hrefLang="de"
         />
 

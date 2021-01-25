@@ -4,6 +4,7 @@ import Layout from "../components/Layout";
 import ProfileHead from "../components/ProfileHead";
 import Text from "../components/Text";
 import ProfileQuote from "../components/ProfileQuote";
+import Seo from '../components/Seo'
 
 export default function Home({ data }) {
   const mediator = data.directus.items.mediators[0];
@@ -11,6 +12,12 @@ export default function Home({ data }) {
 
   return (
     <Layout>
+      <Seo
+        title={`${mediator.name}`}
+        description={mediator.translations[0].excerpt}
+        image={`https://mediator.stahlnecker.me/assets/${mediator.profile_picture?.id}`}
+        language={mediator.translations[0].languages_code.code}
+      />
       <ProfileHead
         coverImage={mediator.cover_photo?.id}
         profileImage={
@@ -54,9 +61,13 @@ export const pageQuery = graphql`
             id
           }
           translations {
+            languages_code {
+                code
+            }
             content
             id
             quote
+            excerpt
             specialties
             tagline
             languages_code {
