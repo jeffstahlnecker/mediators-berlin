@@ -11,7 +11,8 @@ require("dotenv").config({
 module.exports = {
   siteMetadata: {
     title: "Chance im Konflikt",
-    description: "Site Description.",
+    description:
+      "Konflikte gehören zum Alltag und werden oft als belastend wahrgenommen. Eine konstruktive Konfliktlösung kann alle Beteiligten weiterbringen und ein harmonisches, oder zumindest friedvolles, Miteinander ermöglichen.",
     author: "Jeff Stahlnecker",
     image: "/defaultImg.png",
     siteUrl: "https://www.chance-im-konflikt.de",

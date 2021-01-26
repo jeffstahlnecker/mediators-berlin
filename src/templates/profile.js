@@ -4,7 +4,7 @@ import Layout from "../components/Layout";
 import ProfileHead from "../components/ProfileHead";
 import Text from "../components/Text";
 import ProfileQuote from "../components/ProfileQuote";
-import Seo from '../components/Seo'
+import Seo from "../components/Seo";
 
 export default function Home({ data }) {
   const mediator = data.directus.items.mediators[0];
@@ -41,7 +41,7 @@ export default function Home({ data }) {
 }
 
 export const pageQuery = graphql`
-  query($slug: String) {
+  query($slug: String, $language: ID!) {
     directus {
       items {
         mediators(filter: { slug: { _eq: $slug } }) {
@@ -60,9 +60,12 @@ export const pageQuery = graphql`
           profile_picture {
             id
           }
-          translations {
+          translations(
+            filter: { languages_code: { code: { _contains: $language } } }
+          ) {
             languages_code {
-                code
+              code
+              name
             }
             content
             id
@@ -70,10 +73,6 @@ export const pageQuery = graphql`
             excerpt
             specialties
             tagline
-            languages_code {
-              code
-              name
-            }
           }
         }
       }

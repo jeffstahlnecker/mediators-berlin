@@ -27,7 +27,7 @@ export const PureProfileHead = ({
   ]);
 
   const ProfileContainer = tw.div`
-flex flex-col items-center lg:grid lg:grid-cols-12 lg:grid-flow-row-dense bg-green-300
+flex flex-col items-center lg:grid lg:grid-cols-12 lg:grid-flow-row-dense bg-green-300 
 `;
 
   return (
@@ -67,7 +67,7 @@ flex flex-col items-center lg:grid lg:grid-cols-12 lg:grid-flow-row-dense bg-gre
             })}
           </SpecialtyContainer>
         </HeadText>
-        <div className="flex flex-col col-start-10 pb-5 md:pb-0 font-semibold">
+        <div className="flex flex-col lg:col-start-9 xl:col-start-10 pb-5 md:pb-0 font-semibold">
           {email ? (
             <Email className="flex flex-row">
               <div className="mr-2">
