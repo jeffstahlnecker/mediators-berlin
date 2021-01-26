@@ -15,6 +15,14 @@ export const PureProfileHead = ({
   pillColor,
   pillTextColor,
 }) => {
+  function bPadding() {
+    let padding = "pb-14";
+    if (specialties.length > 4) {
+      padding = "lg:pb-32 xl:pb-14";
+    }
+    return padding;
+  }
+
   const Hr = styled.div(() => [
     `background-color: ${secondaryColor};`,
     coverImage ? tw`h-1` : tw`h-20`,
@@ -44,7 +52,10 @@ flex flex-col items-center lg:grid lg:grid-cols-12 lg:grid-flow-row-dense bg-gre
       )}
       {secondaryColor ? <Hr /> : ""}
 
-      <ProfileContainer style={{ backgroundColor: primaryColor }}>
+      <ProfileContainer
+        style={{ backgroundColor: primaryColor }}
+        className={bPadding()}
+      >
         <Image>
           <img
             className={
