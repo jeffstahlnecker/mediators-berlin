@@ -4,9 +4,9 @@
  * See: https://www.gatsbyjs.org/docs/gatsby-config/
  */
 
-require("dotenv").config({
+ require("dotenv").config({
   path: `.env.${process.env.NODE_ENV}`,
-});
+})
 
 module.exports = {
   siteMetadata: {
@@ -32,8 +32,8 @@ module.exports = {
       options: {
         url: `https://prtl.chance-im-konflikt.de`,
         auth: {
-          email: 'admin@example.com',
-          password: '57nyT4fpef3sgHYk',
+          email: process.env.DIRECTUS_USER,
+          password: process.env.DIRECTUS_PASSWORD,
         },
       },
     },
