@@ -5,7 +5,6 @@ import { graphql, useStaticQuery } from "gatsby";
 const PureContent = ({ data }) => {
   const home = data.directus.Home;
   const translated = home.translations[0];
-  console.log(translated)
 
   return (
     <Section>
