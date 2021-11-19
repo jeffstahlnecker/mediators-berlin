@@ -3,15 +3,17 @@ import tw from "twin.macro";
 import { graphql, useStaticQuery } from "gatsby";
 
 const PureContent = ({ data }) => {
-  const { home } = data.directus.items;
+  const home = data.directus.Home;
   const translated = home.translations[0];
+  console.log(translated)
+
   return (
     <Section>
       <Container>
         <HiddenBlock />
         <Title>
-          <SmallTitleText>{translated.small_title}</SmallTitleText>
-          <TitleText>{translated.title}</TitleText>
+          <SmallTitleText>{translated.Small_Title}</SmallTitleText>
+          <TitleText>{translated.Title}</TitleText>
         </Title>
         <PictureSection>
           <Pattern>
@@ -51,7 +53,7 @@ const PureContent = ({ data }) => {
               <figure>
                 <Image>
                   <ThePicture
-                    src={`https://mediator.stahlnecker.me/assets/${home.second_photo?.id}`}
+                    src={`https://prtl.chance-im-konflikt.de/assets/${home.Second_Photo?.id}`}
                     alt="This is a picture"
                     className="rounded-lg shadow-lg object-cover object-center absolute inset-0 w-full h-full lg:static lg:h-auto"
                   />
@@ -76,10 +78,10 @@ const PureContent = ({ data }) => {
           <div>
             <TextSection>
               <BlurbSection>
-                <BlurbText>{translated.blurb}</BlurbText>
+                <BlurbText>{translated.Blurb}</BlurbText>
               </BlurbSection>
               <MainText
-                dangerouslySetInnerHTML={{ __html: translated.content }}
+                dangerouslySetInnerHTML={{ __html: translated.Content }}
               />
             </TextSection>
           </div>
@@ -90,36 +92,30 @@ const PureContent = ({ data }) => {
 };
 
 export const Content = ({ ...props }) => {
-  const data = useStaticQuery(graphql`
-    query {
-      file(relativePath: { eq: "face.jpg" }) {
-        childImageSharp {
-          fluid {
-            ...GatsbyImageSharpFluid_withWebp_tracedSVG
-          }
-        }
+  const data = useStaticQuery(graphql`{
+  file(relativePath: {eq: "face.jpg"}) {
+    childImageSharp {
+      gatsbyImageData(placeholder: TRACED_SVG, layout: FULL_WIDTH)
+    }
+  }
+  directus {
+    Home {
+      Cover_Photo {
+        id
       }
-      directus {
-        items {
-          home {
-            cover_photo {
-              id
-            }
-            second_photo {
-              id
-            }
-            translations {
-              blurb
-              content
-
-              small_title
-              title
-            }
-          }
-        }
+      Second_Photo {
+        id
+      }
+      translations {
+        Blurb
+        Content
+        Small_Title
+        Title
       }
     }
-  `);
+  }
+}
+`);
   return <PureContent {...props} data={data} />;
 };
 

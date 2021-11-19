@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { graphql, useStaticQuery, Link } from "gatsby";
-import Img from "gatsby-image";
+import { GatsbyImage } from "gatsby-plugin-image";
 import tw from "twin.macro";
 import "../styles/tailwind-ui.min.css";
 
@@ -12,10 +12,9 @@ const PureNavbar = ({ data }) => {
         <Section>
           <Flex>
             <Logo>
-              <Img
-                fixed={data.file.childImageSharp.fixed}
-                alt="Chance im Konflikt Logo"
-              />
+              <GatsbyImage
+                image={data.file.childImageSharp.gatsbyImageData}
+                alt="Chance im Konflikt Logo" />
             </Logo>
             <Menu>
               <MenuItem to="/">Home</MenuItem>
@@ -65,17 +64,14 @@ const PureNavbar = ({ data }) => {
 };
 
 export const Navbar = () => {
-  const data = useStaticQuery(graphql`
-    query {
-      file(relativePath: { eq: "logo.png" }) {
-        childImageSharp {
-          fixed(width: 200) {
-            ...GatsbyImageSharpFixed_withWebp_tracedSVG
-          }
-        }
-      }
+  const data = useStaticQuery(graphql`{
+  file(relativePath: {eq: "logo.png"}) {
+    childImageSharp {
+      gatsbyImageData(width: 200, placeholder: TRACED_SVG, layout: FIXED)
     }
-  `);
+  }
+}
+`);
   return <PureNavbar data={data} />;
 };
 

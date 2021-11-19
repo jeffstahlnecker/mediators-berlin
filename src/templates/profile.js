@@ -7,7 +7,7 @@ import ProfileQuote from "../components/ProfileQuote";
 import Seo from "../components/Seo";
 
 export default function Home({ data }) {
-  const mediator = data.directus.items.mediators[0];
+  const mediator = data.directus.Mediators[0];
   const german = mediator.translations[0];
 
   return (
@@ -15,13 +15,13 @@ export default function Home({ data }) {
       <Seo
         title={`${mediator.name}`}
         description={mediator.translations[0].excerpt}
-        image={`https://mediator.stahlnecker.me/assets/${mediator.profile_picture?.id}`}
+        image={`https://prtl.chance-im-konflikt.de/assets/${mediator.profile_picture?.id}`}
         language={mediator.translations[0].languages_code.code}
       />
       <ProfileHead
         coverImage={mediator.cover_photo?.id}
         profileImage={
-          `https://mediator.stahlnecker.me/assets/${mediator.profile_picture?.id}` ||
+          `https://prtl.chance-im-konflikt.de/assets/${mediator.profile_picture?.id}` ||
           ""
         }
         name={mediator.name}
@@ -41,41 +41,40 @@ export default function Home({ data }) {
 }
 
 export const pageQuery = graphql`
-  query($slug: String, $language: ID!) {
+  query($slug: String, $language: String) {
     directus {
-      items {
-        mediators(filter: { slug: { _eq: $slug } }) {
+      Mediators(filter: { slug: { _eq: $slug } }) {
+        id
+        name
+        color
+        secondary_color
+        phone
+        email
+        text_color
+        specialties_background_color
+        specialties_text_color
+        cover_photo {
           id
-          name
-          color
-          secondary_color
-          phone
-          email
-          text_color
-          specialties_background_color
-          specialties_text_color
-          cover_photo {
-            id
+        }
+        profile_picture {
+          id
+        }
+        translations(
+          filter: { languages_code: { code: { _contains: $language } } }
+        ) {
+          languages_code {
+            code
+            name
           }
-          profile_picture {
-            id
-          }
-          translations(
-            filter: { languages_code: { code: { _contains: $language } } }
-          ) {
-            languages_code {
-              code
-              name
-            }
-            content
-            id
-            quote
-            excerpt
-            specialties
-            tagline
-          }
+          content
+          id
+          quote
+          excerpt
+          specialties
+          tagline
         }
       }
-    }
+    
+  }
   }
 `;

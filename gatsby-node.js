@@ -3,27 +3,27 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
   const profileTemplate = require.resolve(`./src/templates/profile.js`);
   const result = await graphql(`
     {
-      directus {
-        items {
-          mediators {
-            id
-            slug
-            translations {
-              languages_code {
-                code
-              }
-            }
-          }
+  directus {
+    Mediators {
+      id
+      slug
+      translations {
+        languages_code {
+          code
         }
       }
     }
+  }
+}
+
   `);
   // Handle errors
   if (result.errors) {
     reporter.panicOnBuild(`Error while running GraphQL query.`);
     return;
   }
-  const { mediators } = result.data.directus.items;
+
+  const mediators  = result.data.directus.Mediators;
 
   function slug(lang, uri) {
     if (lang === "de-DE") {

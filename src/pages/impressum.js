@@ -17,15 +17,15 @@ export default function Impressum({ data }) {
 }
 export const query = graphql`
   query {
-    directus {
-      items {
-        impressum {
-          translations {
-            content
-            id
+
+      directus {
+            Impressum {
+              translations {
+                Content
+                id
+              }
+            }
           }
-        }
-      }
-    }
+    
   }
 `;

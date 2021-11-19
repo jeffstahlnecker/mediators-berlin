@@ -3,7 +3,7 @@ const axios = require("axios");
 async function doIt() {
   const getTheImageArray = await axios
     .get(
-      "https://mediator.stahlnecker.me/items/mediators?fields=cover_photo&fields=profile_picture"
+      "https://prtl.chance-im-konflikt.de.me/items/mediators?fields=cover_photo&fields=profile_picture"
     )
     .then(resp => {
       return resp.data;
@@ -24,7 +24,7 @@ async function doIt() {
   }
 
   const getPhotosArray = theBetterArray.map(photo => {
-    return axios.get(`https://mediator.stahlnecker.me/assets/${photo}`);
+    return axios.get(`https://prtl.chance-im-konflikt.de.me/assets/${photo}`);
   });
 
   const getPhotos = await axios

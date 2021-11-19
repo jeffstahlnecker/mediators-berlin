@@ -21,14 +21,12 @@ export default Datenschutz;
 export const query = graphql`
   query {
     directus {
-      items {
-        datenschutz {
-          translations {
-            text
-            title
-            languages_code {
-              code
-            }
+      Datenschutz {
+        translations {
+          Text
+          Title
+          languages_id {
+            code
           }
         }
       }

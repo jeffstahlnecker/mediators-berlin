@@ -43,7 +43,7 @@ flex flex-col items-center lg:grid lg:grid-cols-12 lg:grid-flow-row-dense bg-gre
       {coverImage !== undefined ? (
         <BackImageWrap>
           <BackImage
-            src={`https://mediator.stahlnecker.me/assets/${coverImage}`}
+            src={`https://prtl.chance-im-konflikt.de/assets/${coverImage}`}
             alt={`${name} mediator cover photo`}
           />
         </BackImageWrap>
@@ -132,24 +132,19 @@ flex flex-col items-center lg:grid lg:grid-cols-12 lg:grid-flow-row-dense bg-gre
 };
 
 export const ProfileHead = ({ ...props }) => {
-  const data = useStaticQuery(graphql`
-    {
-      back: file(relativePath: { eq: "backgroundImg.jpg" }) {
-        childImageSharp {
-          fluid {
-            ...GatsbyImageSharpFluid_withWebp_tracedSVG
-          }
-        }
-      }
-      profile: file(relativePath: { eq: "profilePhoto.jpg" }) {
-        childImageSharp {
-          fixed(width: 200) {
-            ...GatsbyImageSharpFixed_withWebp_tracedSVG
-          }
-        }
-      }
+  const data = useStaticQuery(graphql`{
+  back: file(relativePath: {eq: "backgroundImg.jpg"}) {
+    childImageSharp {
+      gatsbyImageData(placeholder: TRACED_SVG, layout: FULL_WIDTH)
     }
-  `);
+  }
+  profile: file(relativePath: {eq: "profilePhoto.jpg"}) {
+    childImageSharp {
+      gatsbyImageData(width: 200, placeholder: TRACED_SVG, layout: FIXED)
+    }
+  }
+}
+`);
   return <PureProfileHead {...props} data={data} />;
 };
 

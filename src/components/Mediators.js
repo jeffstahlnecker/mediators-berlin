@@ -3,7 +3,7 @@ import { graphql, useStaticQuery, Link } from "gatsby";
 import { Pill } from "./Utils";
 
 const PureMediators = ({ data }) => {
-  const { mediators } = data.directus.items;
+  const mediators = data.directus.Mediators;
   return (
     <div className="relative bg-gray-50 pt-16 pb-20 px-4 sm:px-6 lg:pt-24 lg:pb-28 lg:px-8">
       <div className="absolute inset-0">
@@ -27,7 +27,7 @@ const PureMediators = ({ data }) => {
                 <div className="flex-shrink-0">
                   <img
                     className="h-65 w-full object-cover"
-                    src={`https://mediator.stahlnecker.me/assets/${mediator.profile_picture?.id}`}
+                    src={`https://prtl.chance-im-konflikt.de/assets/${mediator.profile_picture?.id}`}
                     alt={mediator.name}
                   />
                 </div>
@@ -64,8 +64,7 @@ export const Mediators = ({ ...props }) => {
   const data = useStaticQuery(graphql`
     query {
       directus {
-        items {
-          mediators {
+          Mediators {
             id
             status
             name
@@ -95,7 +94,7 @@ export const Mediators = ({ ...props }) => {
               filename_disk
             }
           }
-        }
+        
       }
     }
   `);

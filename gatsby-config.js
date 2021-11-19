@@ -18,6 +18,7 @@ module.exports = {
     siteUrl: "https://www.chance-im-konflikt.de",
   },
   plugins: [
+    `gatsby-plugin-image`,
     `gatsby-plugin-react-helmet`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
@@ -27,11 +28,13 @@ module.exports = {
     "gatsby-plugin-styled-components",
     `gatsby-plugin-react-helmet`,
     {
-      resolve: "gatsby-source-graphql",
+      resolve: '@directus/gatsby-source-directus',
       options: {
-        typeName: "directus2",
-        fieldName: "directus",
-        url: "https://mediator.stahlnecker.me/graphql",
+        url: `https://prtl.chance-im-konflikt.de`,
+        auth: {
+          email: 'admin@example.com',
+          password: '57nyT4fpef3sgHYk',
+        },
       },
     },
     {
